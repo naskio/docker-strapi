@@ -1,0 +1,28 @@
+###################
+# ENV VARS:
+# - PAT (generated at Personal Access Tokens)
+###################
+
+name: Check for new releases
+
+on:
+  schedule:
+    - cron: "0 0 */1 * *"
+
+jobs:
+  get-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+
+      - name: Fetch release version
+        id: fetch-version
+        run: |
+          curl -sL https://api.npms.io/v2/package/%40strapi%2Fstrapi | jq -r ".collected.metadata.version" > release-versions/strapi-latest.txt
+          echo ::set-output name=version::$(cat release-versions/strapi-latest.txt)
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: New auto release v${{steps.fetch-version.outputs.version}}
