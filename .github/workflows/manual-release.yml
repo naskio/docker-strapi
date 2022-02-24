@@ -1,6 +1,6 @@
 ###################
 # ENV VARS:
-# - PAT (generated at Personal Access Tokens)
+# - PAT (generated at Personal Access Tokens - with workflow access checked)
 ###################
 
 name: Create new release manually
