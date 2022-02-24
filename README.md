@@ -8,10 +8,39 @@ API creation made simple, secure and fast. The most advanced open-source Content
 API with no effort.
 
 [GitHub repository](https://github.com/naskio/docker-strapi)
+
 [Docker Hub](https://hub.docker.com/r/naskio/strapi)
----
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/naskio/strapi.svg?style=for-the-badge)](https://hub.docker.com/r/naskio/strapi)
+
+---
+
+# Example
+
+Using Docker Compose, create `docker-compose.yml` file with the following content:
+
+```yaml
+version: '3'
+services:
+  strapi:
+    image: naskio/strapi
+    environment:
+      NODE_ENV: development # or production
+    ports:
+      - '1337:1337'
+    # volumes:
+    #   - ./app:/srv/app # mount an existing strapi project
+```
+
+or using Docker:
+
+```shell
+docker run -d -p 1337:1337 naskio/strapi --env NODE_ENV=development
+```
+
+You can find more example on [GitHub](https://github.com/naskio/docker-strapi/tree/main/examples).
+
+---
 
 # How to use ?
 
@@ -53,32 +82,7 @@ command.
 
 To run an existing project, you can mount the project folder in the container at `/srv/app`.
 
-# Example
-
-Using Docker Compose, create `docker-compose.yml` file with the following content:
-
-```yaml
-version: '3'
-services:
-  strapi:
-    image: naskio/strapi
-    environment:
-      NODE_ENV: development # or production
-    ports:
-      - '1337:1337'
-    # volumes:
-    #   - ./app:/srv/app # mount an existing strapi project
-```
-
-or using Docker:
-
-```shell
-docker run -d -p 1337:1337 naskio/strapi --env NODE_ENV=development
-```
-
-You can find more example on [GitHub](https://github.com/naskio/docker-strapi/tree/main/examples).
-
-# Documentation
+# Official Documentation
 
 - The official documentation of strapi is available on [https://docs.strapi.io/](https://docs.strapi.io/).
 
