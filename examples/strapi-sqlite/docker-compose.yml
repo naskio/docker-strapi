@@ -1,0 +1,8 @@
+version: '3'
+services:
+  strapi:
+    image: naskio/strapi
+    ports:
+      - '1337:1337'
+    # volumes:
+    #   - ./app:/srv/app # to use an existing project or create a new project inside the folder ./app
