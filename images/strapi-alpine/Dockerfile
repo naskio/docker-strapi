@@ -5,7 +5,7 @@ EXPOSE 1337
 
 FROM base-alpine
 
-RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash
+# RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash
 
 ARG STRAPI_VERSION=latest
 

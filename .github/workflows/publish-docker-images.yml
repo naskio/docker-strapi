@@ -43,7 +43,7 @@ jobs:
           build-args: |
             STRAPI_VERSION=${{steps.vars.outputs.tag}}
             NODE_VERSION=14
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          # platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/strapi:${{ steps.vars.outputs.tag }}
@@ -56,7 +56,7 @@ jobs:
           build-args: |
             STRAPI_VERSION=${{ steps.vars.outputs.tag }}
             NODE_VERSION=14
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          # platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/strapi:${{ steps.vars.outputs.tag }}-alpine

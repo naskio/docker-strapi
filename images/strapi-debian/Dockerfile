@@ -5,7 +5,7 @@ EXPOSE 1337
 
 FROM base-debian
 
-RUN apt-get update -y && apt-get install -y libvips
+# RUN apt-get update -y && apt-get install -y libvips
 
 ARG STRAPI_VERSION=latest
 
