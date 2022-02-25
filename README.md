@@ -82,6 +82,49 @@ command.
 
 To run an existing project, you can mount the project folder in the container at `/srv/app`.
 
+--------------------------------------------------------------------------------
+
+# Recommended way to deploy an existing strapi project to production using Docker
+
+To deploy an existing strapi project to production using Docker, it is recommended to build an image for your project
+based on [node v14](https://hub.docker.com/_/node).
+
+Example of Dockerfile:
+
+```dockerfile
+FROM node:14
+# alternatively you can use FROM strapi/base:latest
+
+# Set up working directory
+WORKDIR /app
+
+# Copy package.json to root directory
+COPY package.json .
+
+# Copy yarn.lock to root directory
+COPY yarn.lock .
+
+# Install dependencies, but not generate a yarn.lock file and fail if an update is needed
+RUN yarn install --frozen-lockfile
+
+# Copy strapi project files
+COPY favicon.ico ./favicon.ico
+COPY src/ src/
+COPY public/ public/
+COPY database/ database/
+COPY config/ config/
+# ...
+
+# Build admin panel
+RUN yarn build
+
+# Run on port 1337
+EXPOSE 1337
+
+# Start strapi server
+CMD ["yarn", "start"]
+```
+
 # Official Documentation
 
 - The official documentation of strapi is available on [https://docs.strapi.io/](https://docs.strapi.io/).
