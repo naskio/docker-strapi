@@ -9,7 +9,7 @@ FROM base-alpine
 
 ARG STRAPI_VERSION=latest
 
-RUN yarn config set network-timeout 600000 -g
+# RUN yarn config set network-timeout 600000 -g
 RUN yarn global add @strapi/strapi@${STRAPI_VERSION}
 
 
