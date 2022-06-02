@@ -20,7 +20,7 @@ jobs:
       - name: Fetch release version
         id: fetch-version
         run: |
-          curl -sL https://api.npms.io/v2/package/%40strapi%2Fstrapi | jq -r ".collected.metadata.version" > release-versions/strapi-latest.txt
+          curl -sL https://raw.githubusercontent.com/strapi/strapi/master/packages/core/strapi/package.json | jq -r ".version" > release-versions/strapi-latest.txt
           echo ::set-output name=version::$(cat release-versions/strapi-latest.txt)
 
       - uses: stefanzweifel/git-auto-commit-action@v4
