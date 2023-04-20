@@ -20,14 +20,14 @@ API with no effort.
 Using Docker Compose, create `docker-compose.yml` file with the following content:
 
 ```yaml
-version: '3'
+version: "3"
 services:
   strapi:
     image: naskio/strapi
     environment:
       NODE_ENV: development # or production
     ports:
-      - '1337:1337'
+      - "1337:1337"
     # volumes:
     #   - ./app:/srv/app # mount an existing strapi project
 ```
@@ -82,17 +82,17 @@ command.
 
 To run an existing project, you can mount the project folder in the container at `/srv/app`.
 
---------------------------------------------------------------------------------
+---
 
 # Recommended way to deploy an existing strapi project to production using Docker
 
 To deploy an existing strapi project to production using Docker, it is recommended to build an image for your project
-based on [node v14](https://hub.docker.com/_/node).
+based on [node v18](https://hub.docker.com/_/node).
 
 Example of Dockerfile:
 
 ```dockerfile
-FROM node:14
+FROM node:18
 # alternatively you can use FROM strapi/base:latest
 
 # Set up working directory
