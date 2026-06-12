@@ -14,7 +14,7 @@ services:
       DATABASE_NAME: postgres
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
-      DATABASE_SSL: false # boolean for SSL.
+      DATABASE_SSL: 'false' # boolean for SSL.
     volumes:
       - app:/srv/app # create a new project in app volume
   postgres:
